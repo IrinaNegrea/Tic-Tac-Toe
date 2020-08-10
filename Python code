@@ -26,21 +26,19 @@ def print_instruction():
     print("Please use the following cell numbers to make your move", end =" ")
     print_board([2, 3, 4, 5, 6, 7, 8, 9, 10])
 
-
 def get_input(turn):
     valid = False
     while not valid:
         try:
-            user = input("Where would you like to place " + turn + " (1-9)? ")
+            user = input("\n\nWhere would you like to place " + turn + " (1-9)? ")
             user = int(user)
             if user >= 1 and user <= 9:
                 return user - 1
             else:
-                print("That is not a valid move! Please try again.\n")
+                print("\nThat is not a valid move! Please try again.")
                 print_instruction()
         except Exception as e:
-            print(user + " is not a valid move! Please try again.\n")
-
+            print("\n" + user + " is not a valid move! Please try again.")
 
 def check_win(board):
     win_cond = ((1, 2, 3), (4, 5, 6), (7, 8, 9), (1, 4, 7), (2, 5, 8), (3, 6, 9), (1, 5, 9), (3, 5, 7))
@@ -52,12 +50,10 @@ def check_win(board):
             pass
     return -1
 
-
 def quit_game(board, msg):
     print_board(board)
     print(msg)
     quit()
-
 
 def main():
     # setup game
@@ -67,7 +63,7 @@ def main():
 
     print_instruction()
 
-    board = [-1, -1, -1, -1, -1, -1, -1, -1, -1]
+    board = []
     for i in range(9):
         board.append(-1)
 
@@ -103,7 +99,6 @@ def main():
                 quit_game(board, out)
             elif move == 9:
                 quit_game(board, "\n\nNo winner :(")
-
 
 if __name__ == "__main__":
     main()
